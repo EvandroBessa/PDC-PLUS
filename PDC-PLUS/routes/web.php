@@ -20,10 +20,20 @@ use Illuminate\Support\Facades\Route;
 
 // Route::view('/','hlogin');
 
+use App\Http\Controllers\RegistroController;
+
+Route::get('/registro', [RegistroController::class, 'index']);
+// Route::post('/registro', [RegistroController::class, 'create']);
+Route::post('/registro', [RegistroController::class, 'store']);
+    
+
+
+// Route::get('/registro', function () {
+//     return view('registro');
+// });
+
 Route::get('/', function () {
     return view('login');
 });
 
-Route::get('/registro', function () {
-    return view('registro');
-});
+
