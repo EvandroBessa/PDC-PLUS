@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::view('/','hlogin');
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
+});
+
+Route::get('/registro', function () {
+    return view('registro');
 });
