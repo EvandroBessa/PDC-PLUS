@@ -164,7 +164,7 @@
                     <div class="row">
                       <div class="form-group col-xs-12">
                         <label for="password" class="sr-only">Telefone</label>
-                        <input id="telefone" class="form-control input-group-lg" type="tel" name="telefone" title="Enter password" placeholder="telefone"/>
+                        <input pattern="^\d{4}-\d{3}-\d{4}$" id="telefone" class="form-control input-group-lg" type="tel" name="telefone" title="Enter password" placeholder="telefone"/>
                       </div>
                     </div>
                     <div class="row">
