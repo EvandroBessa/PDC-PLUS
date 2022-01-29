@@ -42,19 +42,9 @@ trait ServiceSubscriberTrait
                 continue;
             }
 
-            if (self::class !== $method->getDeclaringClass()->name) {
-                continue;
+            if (self::class === $method->getDeclaringClass()->name && ($returnType = $method->getReturnType()) && !$returnType->isBuiltin()) {
+                $services[self::class.'::'.$method->name] = '?'.($returnType instanceof \ReflectionNamedType ? $returnType->getName() : $returnType);
             }
-
-            if (!($returnType = $method->getReturnType()) instanceof \ReflectionNamedType) {
-                continue;
-            }
-
-            if ($returnType->isBuiltin()) {
-                continue;
-            }
-
-            $services[self::class.'::'.$method->name] = '?'.$returnType->getName();
         }
 
         return $services;
@@ -62,8 +52,6 @@ trait ServiceSubscriberTrait
 
     /**
      * @required
-     *
-     * @return ContainerInterface|null
      */
     public function setContainer(ContainerInterface $container)
     {
